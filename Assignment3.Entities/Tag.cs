@@ -4,11 +4,11 @@ namespace Assignment3.Entities;
 
 public class Tag
 {
-    private int? Id { get; set; }
+    public int? Id { get; set; }
     [Key]
     [StringLength(50)]
-    private string Name { get; set; }
-    private Task[]? Tasks { get; set; }
+    public string Name { get; set; }
+    public virtual ICollection<Task>? Tasks { get; set; }
 
     public Tag(string name)
     {
