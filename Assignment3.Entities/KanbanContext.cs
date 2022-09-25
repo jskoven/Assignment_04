@@ -45,11 +45,9 @@ public class KanbanContext: DbContext
             entity.HasMany(d => d.Tasks)
                 .WithMany(p => p.Tags);
         });
-
-        OnModelCreatingPartial(modelBuilder);
+        
     }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    
 
 
 }
