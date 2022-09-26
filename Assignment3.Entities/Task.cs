@@ -6,10 +6,11 @@ public class Task
 
     [StringLength(100)]
     public string Title {get;} 
-    public User? AssignedTo {get; set;}
+    
     public string? Description {get; set;}
     public State state {get; set;}
-    public virtual ICollection<Tag>? Tags {get; set;}
+    public virtual List<Tag>? Tags {get; set;}
+    public User? user;
 
     public Task(string title, State state){
         this.Title = title;

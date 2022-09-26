@@ -21,31 +21,28 @@ public class KanbanContext: DbContext
         {
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Email).HasMaxLength(100);
-            entity.Property(e => e.Tasks);
         });
 
         modelBuilder.Entity<Task>(entity =>
         {
-            entity.Property(e => e.Title).HasMaxLength(100);
-
-            entity.Property(e => e.AssignedTo).HasMaxLength(50);
+            entity.Property(e => e.Title).HasMaxLength(100).IsRequired();
 
             entity.Property(e => e.Description);
+            
             entity.Property(e => e.state).HasConversion(v =>v.ToString(),
                 v =>(Task.State)Enum.Parse(typeof(Task.State),v));
-
-            entity.HasMany(d => d.Tags)
-                .WithMany(p => p.Tasks);
+            
         });
-        
+
         modelBuilder.Entity<Tag>(entity =>
         {
-            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
+            entity.HasMany(e => e.Tasks)
+                .WithMany(e => e.Tags)
+                .UsingEntity(e => e.ToTable("TaskTags"));
             
-            entity.HasMany(d => d.Tasks)
-                .WithMany(p => p.Tags);
         });
-        
+
     }
     
 
