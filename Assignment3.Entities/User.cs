@@ -10,7 +10,7 @@ public class User
     [StringLength(100)]
     [Key]
     public string Email { get; set; }
-    public virtual List<Task> Tasks { get; set; }
+    public virtual List<WorkItem> WorkItems { get; set; }
 
     public User(string name, string email)
     {

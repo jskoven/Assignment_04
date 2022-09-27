@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Assignment3.Entities.Migrations
 {
     [DbContext(typeof(KanbanContext))]
-    [Migration("20220926115924_Initial")]
+    [Migration("20220927104717_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -39,7 +39,26 @@ namespace Assignment3.Entities.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Assignment3.Entities.Task", b =>
+            modelBuilder.Entity("Assignment3.Entities.User", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int?>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Assignment3.Entities.WorkItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,48 +88,29 @@ namespace Assignment3.Entities.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Assignment3.Entities.User", b =>
-                {
-                    b.Property<string>("Email")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<int?>("Id")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.HasKey("Email");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("TagTask", b =>
+            modelBuilder.Entity("TagWorkItem", b =>
                 {
                     b.Property<string>("TagsName")
                         .HasColumnType("character varying(100)");
 
-                    b.Property<int>("TasksId")
+                    b.Property<int>("WorkItemsId")
                         .HasColumnType("integer");
 
-                    b.HasKey("TagsName", "TasksId");
+                    b.HasKey("TagsName", "WorkItemsId");
 
-                    b.HasIndex("TasksId");
+                    b.HasIndex("WorkItemsId");
 
-                    b.ToTable("TaskTags", (string)null);
+                    b.ToTable("WorkItemsTags", (string)null);
                 });
 
-            modelBuilder.Entity("Assignment3.Entities.Task", b =>
+            modelBuilder.Entity("Assignment3.Entities.WorkItem", b =>
                 {
                     b.HasOne("Assignment3.Entities.User", null)
-                        .WithMany("Tasks")
+                        .WithMany("WorkItems")
                         .HasForeignKey("UserEmail");
                 });
 
-            modelBuilder.Entity("TagTask", b =>
+            modelBuilder.Entity("TagWorkItem", b =>
                 {
                     b.HasOne("Assignment3.Entities.Tag", null)
                         .WithMany()
@@ -118,16 +118,16 @@ namespace Assignment3.Entities.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Assignment3.Entities.Task", null)
+                    b.HasOne("Assignment3.Entities.WorkItem", null)
                         .WithMany()
-                        .HasForeignKey("TasksId")
+                        .HasForeignKey("WorkItemsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Assignment3.Entities.User", b =>
                 {
-                    b.Navigation("Tasks");
+                    b.Navigation("WorkItems");
                 });
 #pragma warning restore 612, 618
         }

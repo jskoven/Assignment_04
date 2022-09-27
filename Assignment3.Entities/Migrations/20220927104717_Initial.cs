@@ -58,24 +58,24 @@ namespace Assignment3.Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TaskTags",
+                name: "WorkItemsTags",
                 columns: table => new
                 {
                     TagsName = table.Column<string>(type: "character varying(100)", nullable: false),
-                    TasksId = table.Column<int>(type: "integer", nullable: false)
+                    WorkItemsId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TaskTags", x => new { x.TagsName, x.TasksId });
+                    table.PrimaryKey("PK_WorkItemsTags", x => new { x.TagsName, x.WorkItemsId });
                     table.ForeignKey(
-                        name: "FK_TaskTags_Tags_TagsName",
+                        name: "FK_WorkItemsTags_Tags_TagsName",
                         column: x => x.TagsName,
                         principalTable: "Tags",
                         principalColumn: "Name",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TaskTags_Tasks_TasksId",
-                        column: x => x.TasksId,
+                        name: "FK_WorkItemsTags_Tasks_WorkItemsId",
+                        column: x => x.WorkItemsId,
                         principalTable: "Tasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -87,16 +87,16 @@ namespace Assignment3.Entities.Migrations
                 column: "UserEmail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskTags_TasksId",
-                table: "TaskTags",
-                column: "TasksId");
+                name: "IX_WorkItemsTags_WorkItemsId",
+                table: "WorkItemsTags",
+                column: "WorkItemsId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TaskTags");
+                name: "WorkItemsTags");
 
             migrationBuilder.DropTable(
                 name: "Tags");

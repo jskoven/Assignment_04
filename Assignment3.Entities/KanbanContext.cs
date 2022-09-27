@@ -11,7 +11,7 @@ public class KanbanContext: DbContext
     {
     }
 
-    public virtual DbSet<Task> Tasks { get; set; } = null!;
+    public virtual DbSet<WorkItem> Tasks { get; set; } = null!;
     public virtual DbSet<User> Users { get; set; } = null!;
     public virtual DbSet<Tag> Tags { get; set; } = null!;
 
@@ -37,7 +37,7 @@ public class KanbanContext: DbContext
         modelBuilder.Entity<Tag>(entity =>
         {
             entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
-            entity.HasMany(e => e.Tasks)
+            entity.HasMany(e => e.WorkItems)
                 .WithMany(e => e.Tags)
                 .UsingEntity(e => e.ToTable("WorkItemsTags"));
             

@@ -1,6 +1,6 @@
 ﻿namespace Assignment3.Core;
 
-public interface ITaskRepository
+public interface IWorkItemRepository
 {
     (Response Response, int TaskId) Create(TaskCreateDTO task);
     IReadOnlyCollection<TaskDTO> ReadAll();
