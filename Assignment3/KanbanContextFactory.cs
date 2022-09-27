@@ -1,6 +1,7 @@
 ﻿using Assignment3.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace Assignment3;
 
