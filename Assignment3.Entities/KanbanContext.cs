@@ -39,7 +39,7 @@ public class KanbanContext: DbContext
             entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
             entity.HasMany(e => e.Tasks)
                 .WithMany(e => e.Tags)
-                .UsingEntity(e => e.ToTable("TaskTags"));
+                .UsingEntity(e => e.ToTable("WorkItemsTags"));
             
         });
 
