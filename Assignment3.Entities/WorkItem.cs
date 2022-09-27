@@ -1,6 +1,6 @@
 namespace Assignment3.Entities;
 
-public class Task
+public class WorkItem
 {
     public int Id {get; set;}
 
@@ -12,7 +12,7 @@ public class Task
     public virtual List<Tag>? Tags {get; set;}
     public User? user;
 
-    public Task(string title, State state){
+    public WorkItem(string title, State state){
         this.Title = title;
         this.state = state;
     }

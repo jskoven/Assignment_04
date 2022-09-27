@@ -23,14 +23,14 @@ public class KanbanContext: DbContext
             entity.Property(e => e.Email).HasMaxLength(100);
         });
 
-        modelBuilder.Entity<Task>(entity =>
+        modelBuilder.Entity<WorkItem>(entity =>
         {
             entity.Property(e => e.Title).HasMaxLength(100).IsRequired();
 
             entity.Property(e => e.Description);
             
             entity.Property(e => e.state).HasConversion(v =>v.ToString(),
-                v =>(Task.State)Enum.Parse(typeof(Task.State),v));
+                v =>(WorkItem.State)Enum.Parse(typeof(WorkItem.State),v));
             
         });
 
