@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Assignment3.Core;
 
 public class TagRepository : ITagRepository
@@ -9,30 +11,25 @@ public class TagRepository : ITagRepository
     }
     public (Response Response, int TagId) Create(TagCreateDTO tag)
     {
-        var entity = _context.Tags.FirstOrDefault(c => c.Name == tag.Name);
+        Tag entity = _context.Tags.FirstOrDefault(c => c.Name == tag.Name);
         Response response;
 
         if (entity is null)
         {
-            entity = new Tag(tag.Name);
+            entity = new Tag();
             _context.Tags.Add(entity);
             _context.SaveChanges();
             response = Response.Created;
-
         }else
         {
             response = Response.Conflict;
         }
 
-        if (entity.Id != null)
-        {
-        }
+        
 
-        //#####
-        //Can i make entity.id nullable?? ^
-        //#####
+    
         var created = new TagDTO(entity.Id ,entity.Name);
-        return (response, created);
+        return (response, created.Id);
     }
 
     public IReadOnlyCollection<TagDTO> ReadAll()
@@ -76,6 +73,31 @@ public class TagRepository : ITagRepository
 
     public Response Delete(int tagId, bool force = false)
     {
-        
+        Response response;
+        var tag = _context.Tags.Include(c => c.WorkItems).FirstOrDefault(t => t.Id == tagId);
+
+        if (tag is null)
+        {
+            response = Response.NotFound;
+        }else if (tag.WorkItems.Any() && !force)
+        {
+            response = Response.Conflict;
+        }
+        else if (tag.WorkItems.Any() && force)
+        {
+            _context.Tags.Remove(tag);
+            _context.SaveChanges();
+            response = Response.Deleted;
+        }
+        else
+        {
+            _context.Tags.Remove(tag);
+            _context.SaveChanges();
+
+            response = Response.Deleted;
+        }
+
+        return response;
+
     }
 }
