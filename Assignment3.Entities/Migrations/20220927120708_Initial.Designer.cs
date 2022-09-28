@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Assignment3.Entities.Migrations
 {
     [DbContext(typeof(KanbanContext))]
-    [Migration("20220927104717_Initial")]
+    [Migration("20220927120708_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -85,7 +85,7 @@ namespace Assignment3.Entities.Migrations
 
                     b.HasIndex("UserEmail");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("WorkItems");
                 });
 
             modelBuilder.Entity("TagWorkItem", b =>

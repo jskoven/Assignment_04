@@ -82,7 +82,7 @@ namespace Assignment3.Entities.Migrations
 
                     b.HasIndex("UserEmail");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("WorkItems");
                 });
 
             modelBuilder.Entity("TagWorkItem", b =>

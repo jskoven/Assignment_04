@@ -37,7 +37,7 @@ namespace Assignment3.Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tasks",
+                name: "WorkItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -49,9 +49,9 @@ namespace Assignment3.Entities.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tasks", x => x.Id);
+                    table.PrimaryKey("PK_WorkItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tasks_Users_UserEmail",
+                        name: "FK_WorkItems_Users_UserEmail",
                         column: x => x.UserEmail,
                         principalTable: "Users",
                         principalColumn: "Email");
@@ -74,16 +74,16 @@ namespace Assignment3.Entities.Migrations
                         principalColumn: "Name",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_WorkItemsTags_Tasks_WorkItemsId",
+                        name: "FK_WorkItemsTags_WorkItems_WorkItemsId",
                         column: x => x.WorkItemsId,
-                        principalTable: "Tasks",
+                        principalTable: "WorkItems",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_UserEmail",
-                table: "Tasks",
+                name: "IX_WorkItems_UserEmail",
+                table: "WorkItems",
                 column: "UserEmail");
 
             migrationBuilder.CreateIndex(
@@ -102,7 +102,7 @@ namespace Assignment3.Entities.Migrations
                 name: "Tags");
 
             migrationBuilder.DropTable(
-                name: "Tasks");
+                name: "WorkItems");
 
             migrationBuilder.DropTable(
                 name: "Users");
