@@ -1,6 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Assignment3.Core;
 
 namespace Assignment3.Entities;
