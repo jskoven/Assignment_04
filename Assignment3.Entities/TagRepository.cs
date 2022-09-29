@@ -41,10 +41,10 @@ public class TagRepository : ITagRepository
 
     public TagDTO Read(int tagId)
     {
-        var tag = from TagDTO t in _context.Tags
+        var tags = from t in _context.Tags
             where t.Id == tagId
             select new TagDTO(t.Id, t.Name);
-        return tag.FirstOrDefault()!;
+        return tags.FirstOrDefault()!;
     }
 
     public Response Update(TagUpdateDTO tag)
@@ -55,10 +55,13 @@ public class TagRepository : ITagRepository
         {
             response = Response.NotFound;
         }
+        
+        //TODO: Ask about this else if statement
         else if (_context.Tags.FirstOrDefault(c => c.Id != tag.Id && c.Name == tag.Name) != null)
         {
             response = Response.Conflict;
         }
+        
         else
         {
             entity.Name = tag.Name;
