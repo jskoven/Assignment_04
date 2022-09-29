@@ -1,3 +1,5 @@
+using Assignment3.Core;
+
 namespace Assignment3.Entities;
 
 public class WorkItem
@@ -12,18 +14,10 @@ public class WorkItem
     public virtual List<Tag>? Tags {get; set;}
     public User? user;
 
-    public WorkItem(string title, State state){
+    public WorkItem(string title){
         this.Title = title;
-        this.state = state;
     }
 
-    public enum State{
-        New,
-        Active,
-        Resolved,
-        Closed,
-        Removed
-
-    }
+   
 
 }

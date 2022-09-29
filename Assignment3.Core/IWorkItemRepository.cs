@@ -2,13 +2,13 @@
 
 public interface IWorkItemRepository
 {
-    (Response Response, int TaskId) Create(TaskCreateDTO task);
-    IReadOnlyCollection<TaskDTO> ReadAll();
-    IReadOnlyCollection<TaskDTO> ReadAllRemoved();
-    IReadOnlyCollection<TaskDTO> ReadAllByTag(string tag);
-    IReadOnlyCollection<TaskDTO> ReadAllByUser(int userId);
-    IReadOnlyCollection<TaskDTO> ReadAllByState(State state);
-    TaskDetailsDTO Read(int taskId);
-    Response Update(TaskUpdateDTO task);
+    (Response Response, int WorkItemId) Create(WorkItemCreateDTO task);
+    IReadOnlyCollection<WorkItemDTO> ReadAll();
+    IReadOnlyCollection<WorkItemDTO> ReadAllRemoved();
+    IReadOnlyCollection<WorkItemDTO> ReadAllByTag(string tag);
+    IReadOnlyCollection<WorkItemDTO> ReadAllByUser(int userId);
+    IReadOnlyCollection<WorkItemDTO> ReadAllByState(State state);
+    WorkItemDetailsDTO Read(int workItemId);
+    Response Update(WorkItemUpdateDTO workItem);
     Response Delete(int taskId);
 }

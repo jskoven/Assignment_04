@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Assignment3.Core;
 
 namespace Assignment3.Entities;
 
@@ -11,7 +12,7 @@ public class KanbanContext: DbContext
     {
     }
 
-    public virtual DbSet<WorkItem> Tasks { get; set; } = null!;
+    public virtual DbSet<WorkItem> WorkItems { get; set; } = null!;
     public virtual DbSet<User> Users { get; set; } = null!;
     public virtual DbSet<Tag> Tags { get; set; } = null!;
 
@@ -30,7 +31,7 @@ public class KanbanContext: DbContext
             entity.Property(e => e.Description);
             
             entity.Property(e => e.state).HasConversion(v =>v.ToString(),
-                v =>(WorkItem.State)Enum.Parse(typeof(WorkItem.State),v));
+                v =>(State)Enum.Parse(typeof(State),v));
             
         });
 
