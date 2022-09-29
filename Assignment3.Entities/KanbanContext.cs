@@ -40,8 +40,11 @@ public class KanbanContext: DbContext
             entity.HasMany(e => e.WorkItems)
                 .WithMany(e => e.Tags)
                 .UsingEntity(e => e.ToTable("WorkItemsTags"));
-            
+            entity.HasKey(c => c.Id);
+
+
         });
+        
 
     }
     
