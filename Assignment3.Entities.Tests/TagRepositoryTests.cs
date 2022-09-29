@@ -142,6 +142,26 @@ public class TagRepositoryTests : IDisposable
 
     }
 
+    [Fact]
+    public void read_all_should_contain_all_tags()
+    {
+        var (response1, id1) = _repository.Create(new TagCreateDTO("tag1"));
+        var (response2, id2) = _repository.Create(new TagCreateDTO("tag2"));
+        var (response3, id3) = _repository.Create(new TagCreateDTO("tag3"));
+
+        var actual = _repository.ReadAll();
+
+        actual.Should().HaveCountGreaterThanOrEqualTo(3);
+    }
+
+    [Fact]
+    public void read_all_should_only_have_one_when_none_added()
+    {
+        //There is one element in the returned collection, since a single tag
+        //has been added in the constructor to test the deletion conflict method.
+        var actual = _repository.ReadAll();
+        actual.Should().HaveCountLessOrEqualTo(1);
+    }
     public void Dispose()
     {
         _context.Dispose();
