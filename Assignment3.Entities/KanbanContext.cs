@@ -20,6 +20,7 @@ public class KanbanContext: DbContext
         {
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Email).HasMaxLength(100);
+            entity.HasKey(c => c.Id);
         });
 
         modelBuilder.Entity<WorkItem>(entity =>
@@ -30,6 +31,7 @@ public class KanbanContext: DbContext
             
             entity.Property(e => e.state).HasConversion(v =>v.ToString(),
                 v =>(State)Enum.Parse(typeof(State),v));
+            entity.HasKey(c => c.Id);
             
         });
 

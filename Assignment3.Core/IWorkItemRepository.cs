@@ -10,5 +10,5 @@ public interface IWorkItemRepository
     IReadOnlyCollection<WorkItemDTO> ReadAllByState(State state);
     WorkItemDetailsDTO Read(int workItemId);
     Response Update(WorkItemUpdateDTO workItem);
-    Response Delete(int taskId);
+    Response Delete(int workItemId);
 }

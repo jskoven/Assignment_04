@@ -13,77 +13,95 @@ public class WorkItemRepository:IWorkItemRepository
         var entity = _context.WorkItems.FirstOrDefault(c => c.Title == workItem.Title);
         Response response;
         
-        if (entity is null)
+        if (entity != null)
+        {
+            response = Response.Conflict;
+        }
+        else if (workItem.AssignedToId != null &&
+                 _context.Users.FirstOrDefault(c => c.Id == workItem.AssignedToId) is null)
+        {
+            return (Response.BadRequest, -1);
+        }
+        else
         {
             entity = new WorkItem(workItem.Title);
-
+            entity.user = _context.Users.FirstOrDefault(c => c.Id == workItem.AssignedToId); 
+            entity.Description = workItem.Description;
+            if (workItem.Tags != null)
+            {
+                entity.Tags = (from c in _context.Tags
+                    where workItem.Tags.Contains(c.Name)
+                    select c).ToList();
+            }
+           
+            
             _context.WorkItems.Add(entity);
             _context.SaveChanges();
 
             response = Response.Created;
         }
-        else
-        {
-            response = Response.Conflict;
-        }
+        
         return (response, entity.Id);
     }
 
     public IReadOnlyCollection<WorkItemDTO> ReadAll()
     {
-        var workItems = from WorkItemDTO c in _context.WorkItems
+        var workItems = from c in _context.WorkItems
             orderby c.Title
-            select new WorkItemDTO(c.Id, c.Title, c.AssignedToName, c.Tags, c.State);
+            select new WorkItemDTO(c.Id, c.Title, c.user.Name, (IReadOnlyCollection<string>)c.Tags.Select(x=>x.Name), c.state);
 
         return workItems.ToArray();
     }
     
     public IReadOnlyCollection<WorkItemDTO> ReadAllRemoved()
     {
-        var workItems = from WorkItemDTO c in _context.WorkItems
+        var workItems = from c in _context.WorkItems
             orderby c.Title
-            where c.State==State.Removed
-            select new WorkItemDTO(c.Id, c.Title, c.AssignedToName, c.Tags, c.State);
+            where c.state==State.Removed
+            select new WorkItemDTO(c.Id, c.Title, c.user.Name, (IReadOnlyCollection<string>)c.Tags.Select(x=>x.Name), c.state);
 
         return workItems.ToArray();
     }
     public IReadOnlyCollection<WorkItemDTO> ReadAllByTag(string tag)
     {
-        var workItems = from WorkItemDTO c in _context.WorkItems
-            where c.Tags.Contains(tag)
-            select new WorkItemDTO(c.Id, c.Title, c.AssignedToName, c.Tags, c.State);
+        var workItems = from c in _context.WorkItems
+            where ((IReadOnlyCollection<string>)c.Tags.Select(x=>x.Name)).Contains(tag)
+            select new WorkItemDTO(c.Id, c.Title, c.user.Name, (IReadOnlyCollection<string>)c.Tags.Select(x=>x.Name), c.state);
 
         return workItems.ToArray();
     }
     public IReadOnlyCollection<WorkItemDTO> ReadAllByUser(int userId)
     {
-        var workItems = from WorkItemDTO c in _context.WorkItems
-            join UserDTO u in _context.Users on c.AssignedToName equals u.Name
-            where u.Id == userId
-            select new WorkItemDTO(c.Id, c.Title, c.AssignedToName, c.Tags, c.State);
+        var workItemsFiltered = new List<WorkItem>();
+        foreach (var it in _context.WorkItems)
+        {
+            if (it.user?.Id==userId) workItemsFiltered.Add(it);
+        }
+        var workItems = workItemsFiltered.Select(c=>new WorkItemDTO(c.Id, c.Title, c.user.Name, c.Tags.Select(x=>x.Name).ToList(), c.state));
 
+        
         return workItems.ToArray();
         
     }
     public IReadOnlyCollection<WorkItemDTO> ReadAllByState(State state)
     {
-        var workItems = from WorkItemDTO c in _context.WorkItems
-            where c.State==state
-            select new WorkItemDTO(c.Id, c.Title, c.AssignedToName, c.Tags, c.State);
+        var workItems = from c in _context.WorkItems
+            where c.state==state
+            select new WorkItemDTO(c.Id, c.Title, c.user.Name, (IReadOnlyCollection<string>)c.Tags.Select(x=>x.Name), c.state);
 
         return workItems.ToArray();
     }
     public WorkItemDetailsDTO Read(int workItemId)
     {
-        var workItems = (from WorkItemDetailsDTO c in _context.WorkItems
+        var workItems = (from c in _context.WorkItems
             where c.Id==workItemId
-            select new WorkItemDetailsDTO(c.Id, c.Title,c.Description , c.Created,c.AssignedToName, c.Tags, c.State,c.StateUpdated)).First();
+            select new WorkItemDetailsDTO(c.Id, c.Title, c.Description,c.Created, c.user.Name, (IReadOnlyCollection<string>)c.Tags.Select(x=>x.Name), c.state, c.StateUpdated)).FirstOrDefault();
 
         return workItems;
     }
     public Response Update(WorkItemUpdateDTO workItem)
     {
-        var entity = _context.WorkItems.Find(workItem.Title);
+        var entity = _context.WorkItems.Find(workItem.Id);
         Response response;
         
         if (entity is null)
@@ -94,15 +112,52 @@ public class WorkItemRepository:IWorkItemRepository
         {
             response = Response.Conflict;
         }
+        else if (workItem.AssignedToId !=null && _context.Users.FirstOrDefault(c => c.Id == workItem.AssignedToId) is null)
+        {
+            response = Response.BadRequest;
+        }
         else
         {
-            return Response.Conflict;
+         
+            entity.Title = workItem.Title;
+            entity.Description = workItem.Description;
+            entity.Tags = (from c in _context.Tags
+                where workItem.Tags.Contains(c.Name)
+                select c).ToList();
+            entity.user = _context.Users.FirstOrDefault(c => c.Id == workItem.AssignedToId);
+            entity.state = workItem.State;
+            entity.StateUpdated=DateTime.Now;
+            response = Response.Updated;
         }
-        
         return response;
     }
-    public Response Delete(int taskId)
+    public Response Delete(int workItemId)
     {
-        return Response.Conflict;
+        var workItem = _context.WorkItems.FirstOrDefault(c => c.Id == workItemId);
+        Response response;
+
+        if (workItem is null)
+        {
+            response = Response.NotFound;
+        }
+        else if (workItem.state == State.Active)
+        {
+            workItem.state = State.Removed;
+            _context.SaveChanges();
+            response = Response.Deleted;
+        } else if (workItem.state == State.Closed || workItem.state == State.Resolved ||
+                   workItem.state == State.Removed)
+        {
+            response = Response.Conflict;
+        }
+        else
+        {
+            _context.WorkItems.Remove(workItem);
+            _context.SaveChanges();
+
+            response = Response.Deleted;
+        }
+
+        return response;
     }
 }
