@@ -11,7 +11,7 @@ public class TagRepository : ITagRepository
     }
     public (Response Response, int TagId) Create(TagCreateDTO tag)
     {
-        Tag entity = _context.Tags.FirstOrDefault(c => c.Name == tag.Name);
+        var entity = _context.Tags.FirstOrDefault(c => c.Name == tag.Name);
         Response response;
 
         if (entity is null)
@@ -34,7 +34,7 @@ public class TagRepository : ITagRepository
 
     public IReadOnlyCollection<TagDTO> ReadAll()
     {
-        var tags = from TagDTO t in _context.Tags
+        var tags = from t in _context.Tags
             orderby t.Name
             select new TagDTO(t.Id, t.Name);
 
