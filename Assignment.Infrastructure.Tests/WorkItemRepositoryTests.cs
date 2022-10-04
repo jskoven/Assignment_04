@@ -22,8 +22,8 @@ public class WorkItemRepositoryTests:IDisposable
         _context = context;
         _repository = new WorkItemRepository(_context);
         _context.Database.EnsureCreated();
-        _context.Users.Add(new User("Torben", "Torben@Gmail.com"));
-        _context.Users.Add(new User("mille", "mille@Gmail.com"));
+        _context.Users.Add(new User{Name = "Torben", Email = "Torben@Gmail.com"});
+        _context.Users.Add(new User{Name = "mille", Email = "mille@Gmail.com"});
         _context.Tags.Add(new Tag { Name = "Urgent"});
         _context.Tags.Add(new Tag { Name = "LowPriority"});
         _context.Tags.Add(new Tag { Name = "Hard"});
