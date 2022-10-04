@@ -21,6 +21,9 @@ public class KanbanContext: DbContext
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.HasKey(c => c.Id);
+            entity.HasIndex(c => c.Email).IsUnique();
+            entity.Property(c => c.Email).IsRequired();
+
         });
 
         modelBuilder.Entity<WorkItem>(entity =>

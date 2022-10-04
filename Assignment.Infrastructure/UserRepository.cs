@@ -11,7 +11,7 @@ public class UserRepository : IUserRepository
     }
     public (Response Response, int UserId) Create(UserCreateDTO user)
     {
-        var entity = _context.Users.FirstOrDefault(c => c.Name == user.Name);
+        var entity = _context.Users.FirstOrDefault(c => c.Email == user.Email);
         Response response;
 
         if (entity is null)
@@ -57,7 +57,6 @@ public class UserRepository : IUserRepository
             response = Response.NotFound;
         }
         
-        //TODO: Ask about this else if statement
         else if (_context.Users.FirstOrDefault(c => c.Id != user.Id && c.Email == user.Email) != null)
         {
             response = Response.Conflict;

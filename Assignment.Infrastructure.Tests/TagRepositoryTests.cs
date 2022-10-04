@@ -1,7 +1,5 @@
 using Assignment3.Core;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.Sqlite;
-
 namespace Assignment3.Entities.Tests;
 
 public class TagRepositoryTests : IDisposable
@@ -120,10 +118,7 @@ public class TagRepositoryTests : IDisposable
     {
         //Arrange
         var (response1, id1) = _repository.Create(new TagCreateDTO("tag"));
-        
-        //Assert
-        response1.Should().Be(Response.Created);
-        
+
         //act
         var deletion = _repository.Delete(2);
         
