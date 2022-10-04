@@ -2,8 +2,6 @@ using Assignment3.Core;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-
-
 namespace Assignment3.Entities.Tests;
 
 public class WorkItemRepositoryTests:IDisposable

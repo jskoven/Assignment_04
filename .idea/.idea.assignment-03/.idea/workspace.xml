@@ -4,11 +4,26 @@
     <projectFile>Assignment3/Assignment3.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46c38035-bd74-4512-aff6-de440df3584e" name="Changes" comment="Changed file names" />
+    <list default="true" id="46c38035-bd74-4512-aff6-de440df3584e" name="Changes" comment="Added README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/TagRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/TagRepositoryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/UserRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/UserRepositoryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Usings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure/KanbanContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/KanbanContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/UserRepository.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assignment.Infrastructure/Migrations/20220929083200_InitialCreate.Designer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -58,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664879660767</updated>
-      <workItem from="1664879664859" duration="1399000" />
+      <workItem from="1664879664859" duration="5840000" />
     </task>
     <task id="LOCAL-00001" summary="Changed file names">
       <created>1664880474832</created>
@@ -67,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664880474832</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added README.md">
+      <created>1664881336996</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1664881336996</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +111,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Changed file names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed file names" />
+    <MESSAGE value="Added README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added README.md" />
   </component>
 </project>
