@@ -1,10 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>70bcb991-7ab9-4980-89f0-bf6f604f550d</UserSecretsId>
+    <RootNamespace>Assignment3</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Assignment.Core\Assignment.Core.csproj" />
+    <ProjectReference Include="..\Assignment.Infrastructure.Tests\Assignment.Infrastructure.Tests.csproj" />
+    <ProjectReference Include="..\Assignment.Infrastructure\Assignment.Infrastructure.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Assignment3.Core\Assignment3.Core.csproj" />
@@ -12,9 +21,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.0-rc.1.22426.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkcore.sqlite" Version="7.0.0-rc.1.22426.7"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-rc.1.22426.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0-rc.1.22426.7">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

@@ -6,6 +6,8 @@
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
+
+        <RootNamespace>Assignment3.Entities.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,7 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Assignment3.Entities\Assignment3.Entities.csproj" />
+        <ProjectReference Include="..\Assignment.Infrastructure\Assignment.Infrastructure.csproj" />
         <ProjectReference Include="..\MyApp.Infrastructure\MyApp.Infrastructure.csproj" />
     </ItemGroup>
 

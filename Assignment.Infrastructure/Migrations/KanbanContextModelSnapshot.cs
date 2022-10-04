@@ -17,7 +17,7 @@ namespace Assignment3.Entities.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.1.22426.7");
 
-            modelBuilder.Entity("Assignment3.Entities.Tag", b =>
+            modelBuilder.Entity("Assignment.Infrastructure.Tag", b =>
                 {
                     b.Property<string>("Name")
                         .HasMaxLength(100)
@@ -31,7 +31,7 @@ namespace Assignment3.Entities.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Assignment3.Entities.User", b =>
+            modelBuilder.Entity("Assignment.Infrastructure.User", b =>
                 {
                     b.Property<string>("Email")
                         .HasMaxLength(100)
@@ -50,7 +50,7 @@ namespace Assignment3.Entities.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Assignment3.Entities.WorkItem", b =>
+            modelBuilder.Entity("Assignment.Infrastructure.WorkItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,29 +93,29 @@ namespace Assignment3.Entities.Migrations
                     b.ToTable("WorkItemsTags", (string)null);
                 });
 
-            modelBuilder.Entity("Assignment3.Entities.WorkItem", b =>
+            modelBuilder.Entity("Assignment.Infrastructure.WorkItem", b =>
                 {
-                    b.HasOne("Assignment3.Entities.User", null)
+                    b.HasOne("Assignment.Infrastructure.User", null)
                         .WithMany("WorkItems")
                         .HasForeignKey("UserEmail");
                 });
 
             modelBuilder.Entity("TagWorkItem", b =>
                 {
-                    b.HasOne("Assignment3.Entities.Tag", null)
+                    b.HasOne("Assignment.Infrastructure.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Assignment3.Entities.WorkItem", null)
+                    b.HasOne("Assignment.Infrastructure.WorkItem", null)
                         .WithMany()
                         .HasForeignKey("WorkItemsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Assignment3.Entities.User", b =>
+            modelBuilder.Entity("Assignment.Infrastructure.User", b =>
                 {
                     b.Navigation("WorkItems");
                 });
