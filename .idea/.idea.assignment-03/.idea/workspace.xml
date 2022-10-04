@@ -4,47 +4,7 @@
     <projectFile>Assignment3/Assignment3.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46c38035-bd74-4512-aff6-de440df3584e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/efCoreCommonOptions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-03/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/Assignment3.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/Assignment.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/ITagRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/ITagRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/IWorkItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/IWorkItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/Response.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/Response.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/State.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/TagDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/TagDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/UserDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/UserDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/Usings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Core/WorkItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/WorkItemDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities.Tests/Assignment3.Entities.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Assignment.Infrastructure.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities.Tests/TagRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/TagRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities.Tests/UserRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/UserRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities.Tests/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Usings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities.Tests/WorkItemRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/Assignment3.Entities.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/Assignment.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/KanbanContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/KanbanContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/KanbanContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/KanbanContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/Migrations/20220929083200_InitialCreate.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/Migrations/20220929083200_InitialCreate.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/Migrations/20220929083200_InitialCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/Migrations/20220929083200_InitialCreate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/Migrations/KanbanContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/Migrations/KanbanContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/Tag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/Tag.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/TagRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/TagRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/Usings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/WorkItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/WorkItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3.Entities/WorkItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/WorkItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3/Assignment3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment/Assignment.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment3/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment/Usings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment-03.sln" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-04.sln" afterDir="false" />
-    </list>
+    <list default="true" id="46c38035-bd74-4512-aff6-de440df3584e" name="Changes" comment="Changed file names" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,8 +58,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664879660767</updated>
-      <workItem from="1664879664859" duration="774000" />
+      <workItem from="1664879664859" duration="1399000" />
     </task>
+    <task id="LOCAL-00001" summary="Changed file names">
+      <created>1664880474832</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664880474832</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,5 +88,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Changed file names" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed file names" />
   </component>
 </project>
